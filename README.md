@@ -10,7 +10,8 @@ Revising is such a mundane task, don't you agree? Enter Questionnaire!Questionna
 We have chosen these type of questions,because they ensure complete revision along with the fact that they aren't time consuming.
 Students can practice by giving a quiz based on "Fill in the blank" questions they have generated and know their score,thus testing their knowledge of the text.
 We also provide with a PDF of the Short answer type questions generated so that a student can practice offline as well.
-We hope that students find revision easy, with Questionnaire.
+We hope that students find revision easy, with Questionnaire. 
+
 
 ## Prerequisites:
 1. pip install pyqt5
@@ -20,7 +21,7 @@ We hope that students find revision easy, with Questionnaire.
 5. pip install requests
 6. pip install asyncio
 7. pip install fpdf
-
+Make sure you have installed all these modules before beginning.
 ## Getting started :
 After insatlling all the modules, you can download the zip file on your desktop and can run main.py
 
@@ -50,3 +51,4 @@ https://youtu.be/NdFBsiS2JCU
 1. Python
 2. QtDesigner
 3. Quillionz API
+4. Many modules like pytesseract,asyncio.
