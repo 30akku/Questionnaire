@@ -1,54 +1,121 @@
 # Questionnaire
-Your revision partner
 
-Revising is such a mundane task, don't you agree? Enter Questionnaire!Questionnaire, is the most efficient way to revise. All you need to do is upload an image, of the text that you need to revise. And let the questionnaire generate questions for you!We provide with two kinds of questions 
+Desktop revision assistant that extracts text from study material images and generates practice questions for students.
 
-1.Short Answer
+Repository: https://github.com/30akku/Questionnaire
 
-2.Fill in the blanks.
+## What It Does
 
-We have chosen these type of questions,because they ensure complete revision along with the fact that they aren't time consuming.
-Students can practice by giving a quiz based on "Fill in the blank" questions they have generated and know their score,thus testing their knowledge of the text.
-We also provide with a PDF of the Short answer type questions generated so that a student can practice offline as well.
-We hope that students find revision easy, with Questionnaire. 
+Questionnaire is a Python desktop application for turning study material into revision questions. A student uploads an image containing text, the app extracts the text with OCR, sends it to a question-generation API, and presents generated practice material through a GUI.
 
+The application supports short-answer questions, fill-in-the-blank questions, quiz-style practice, score checking, and PDF export for offline revision.
 
-## Prerequisites:
-1. pip install pyqt5
-2. pip install pyqt5-tools
-3. pip install opencv-python
-4. pip install pytesseract
-5. pip install requests
-6. pip install asyncio
-7. pip install fpdf
-Make sure you have installed all these modules before beginning.
-## Getting started :
-After insatlling all the modules, you can download the zip file on your desktop and can run main.py
+## Key Features
 
-## How to run the Application?
-Please have a look at the  following link, for a proper demo.
+- Desktop GUI built with Qt.
+- Image upload flow for study material.
+- OCR-based text extraction using Tesseract.
+- Question generation through the Quillionz API.
+- Short-answer question generation.
+- Fill-in-the-blank practice mode.
+- Score/check-answer workflow.
+- PDF export for generated short-answer questions.
+- Included screenshots and demo video link.
+
+## Tech Stack
+
+- Python
+- PySide2 / Qt Designer
+- OpenCV
+- Tesseract OCR / pytesseract
+- Requests
+- FPDF
+- Quillionz API
+
+## Project Structure
+
+```text
+.
+|-- main.py              # Main PySide2 application and question-generation flow
+|-- app_functions.py     # Application function wrapper
+|-- ui_main.py           # Generated main UI code
+|-- ui_splash_screen.py  # Generated splash screen UI code
+|-- ui_functions.py      # UI behavior helpers
+|-- ui_styles.py         # UI style definitions
+|-- *.ui                 # Qt Designer files
+|-- Screenshot (*.png)   # App screenshots
+`-- question_sa.pdf      # Example generated PDF
+```
+
+## How It Works
+
+1. The user opens the desktop application.
+2. The user uploads an image containing study text.
+3. OpenCV preprocesses the image and Tesseract extracts text.
+4. Extracted text is sent to the Quillionz question-generation API.
+5. Generated short-answer and fill-in-the-blank questions are shown in the app.
+6. The user can practice answers, check score, or export short-answer questions to PDF.
+
+## Getting Started
+
+### Prerequisites
+
+- Python
+- Tesseract OCR installed locally
+- A valid Quillionz API configuration, if the public endpoint/key behavior changes
+
+Install Python dependencies:
+
+```bash
+pip install PySide2 opencv-python pytesseract requests fpdf
+```
+
+The original README also mentions `pyqt5`, `pyqt5-tools`, and `asyncio`; the current `main.py` imports PySide2 directly.
+
+### Configure Tesseract
+
+`main.py` currently points to a Windows Tesseract installation:
+
+```python
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files (x86)\Tesseract-OCR\tesseract"
+```
+
+Update this path if Tesseract is installed somewhere else on your machine.
+
+### Run
+
+```bash
+python main.py
+```
+
+## Demo
+
+Video demo from the original README:
 
 https://youtu.be/mHtdlezY2K4
 
-## Some glimpse of the Application:
+## Screenshots
 
-### Page where you can upload image:
-![Screenshot (274)](https://user-images.githubusercontent.com/54696902/92317940-ab7f7500-f023-11ea-9031-0a72ee4e26e4.png)
+### Upload Image
 
-### Page where you can take test:
-![Screenshot (281)](https://user-images.githubusercontent.com/54696902/92318200-6c9eee80-f026-11ea-9e61-80501b01a5e7.png)
+![Upload image screen](https://user-images.githubusercontent.com/54696902/92317940-ab7f7500-f023-11ea-9031-0a72ee4e26e4.png)
 
-### Page where you can check your answers:
-![Screenshot (272)](https://user-images.githubusercontent.com/54696902/92318048-9a833380-f024-11ea-8148-5194b4f88230.png)
+### Practice Test
 
-### Page for short answer type question:
-![Screenshot (273)](https://user-images.githubusercontent.com/54696902/92317951-b9cd9100-f023-11ea-806f-d1fca8e26126.png)
+![Practice test screen](https://user-images.githubusercontent.com/54696902/92318200-6c9eee80-f026-11ea-9e61-80501b01a5e7.png)
 
+### Check Answers
 
+![Check answers screen](https://user-images.githubusercontent.com/54696902/92318048-9a833380-f024-11ea-8148-5194b4f88230.png)
 
+### Short Answer Questions
 
-## Built using : 
-1. Python
-2. QtDesigner
-3. Quillionz API
-4. Many modules like pytesseract,asyncio.
+![Short answer screen](https://user-images.githubusercontent.com/54696902/92317951-b9cd9100-f023-11ea-806f-d1fca8e26126.png)
+
+## Future Improvements
+
+- Add a `requirements.txt` with pinned versions.
+- Move API endpoint and credentials to environment variables.
+- Add error handling for OCR failures, API failures, and empty image uploads.
+- Package the desktop app for easier installation.
+- Split OCR, API, PDF, and UI logic into smaller modules.
